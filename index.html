@@ -305,12 +305,13 @@
 
                 // 💥 HEART EXPLOSION
                 heartExplosion();
+                vibrateSuccess();
 
                 // 💌 WhatsApp redirect AFTER animation
                 setTimeout(() => {
                     const phoneNumber = "7356445321"; // use country code
                     const message = encodeURIComponent(
-                        "I unlocked it Chotuu… Can we talk now?"
+                        "I unlocked it Chotuu… Can we talk now ? "
                     );
                     window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
                 }, 1500);
@@ -326,7 +327,11 @@
             }
         }
 
-
+        function vibrateSuccess() {
+            if ("vibrate" in navigator) {
+                navigator.vibrate([200, 100, 200, 100, 300]); // 💓 pattern
+            }
+        }
 
         function heartExplosion() {
             const container = document.getElementById("heartExplosion");
