@@ -296,16 +296,15 @@
 
             if (input === correctPassword) {
 
-                // 🔊 stop heartbeat
-                sound.pause();
-                sound.currentTime = 0;
+                if (navigator.vibrate) {
+                    navigator.vibrate([100, 50, 100, 50, 200]);
+                }
 
                 // close modal
                 document.getElementById("passwordModal").style.display = "none";
 
                 // 💥 HEART EXPLOSION
                 heartExplosion();
-                vibrateSuccess();
 
                 // 💌 WhatsApp redirect AFTER animation
                 setTimeout(() => {
@@ -324,12 +323,6 @@
                 if (attempts >= 2) {
                     hint.style.display = "block";
                 }
-            }
-        }
-
-        function vibrateSuccess() {
-            if ("vibrate" in navigator) {
-                navigator.vibrate([200, 100, 200, 100, 300]); // 💓 pattern
             }
         }
 
