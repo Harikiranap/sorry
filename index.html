@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I’m Sorry ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  min-height:100vh;
+  background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  font-family:'Poppins',sans-serif;
+}
+
+.container{
+  text-align:center;
+  max-width:700px;
+  width:100%;
+  animation:fadeIn 2s ease;
+}
+
+h1{
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(2.5rem,5vw,3.5rem);
+  margin-bottom:10px;
+}
+
+.heart{
+  width:70px;
+  height:70px;
+  background:red;
+  margin:20px auto;
+  position:relative;
+  transform:rotate(-45deg);
+  animation:heartbeat 1.5s infinite;
+}
+
+.heart::before,
+.heart::after{
+  content:'';
+  width:70px;
+  height:70px;
+  background:red;
+  border-radius:50%;
+  position:absolute;
+}
+
+.heart::before{
+  top:-35px;
+  left:0;
+}
+
+.heart::after{
+  left:35px;
+  top:0;
+}
+
+p{
+  font-size:clamp(0.95rem,3.5vw,1.1rem);
+  line-height:1.8;
+  margin-top:20px;
+  min-height:90px;
+}
+
+.buttons{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+  margin-top:25px;
+}
+
+button{
+  border:2px solid #ff6b81;
+  background:transparent;
+  color:white;
+  padding:12px 22px;
+  border-radius:30px;
+  font-size:1rem;
+  cursor:pointer;
+  transition:0.3s;
+  width:180px;
+}
+
+button:hover{
+  background:#ff6b81;
+  box-shadow:0 0 15px #ff6b81;
+}
+
+.hidden{display:none;}
+
+@keyframes heartbeat{
+  0%,100%{transform:scale(1) rotate(-45deg);}
+  50%{transform:scale(1.2) rotate(-45deg);}
+}
+
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
+/* 📱 Mobile Optimization */
+@media(max-width:480px){
+  .heart{
+    width:55px;
+    height:55px;
+  }
+  .heart::before,
+  .heart::after{
+    width:55px;
+    height:55px;
+  }
+  .heart::before{top:-27px;}
+  .heart::after{left:27px;}
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+  <h1>I’m Sorry</h1>
+  <div class="heart"></div>
+
+  <p id="typeText"></p>
+
+  <div class="buttons">
+    <button onclick="forgive()">Ignore 😏</button>
+    <button onclick="talk()">Let’s Talk 💌</button>
+  </div>
+
+  <p id="response" class="hidden"></p>
+</div>
+
+<script>
+const text = "I never wanted to hurt you. My mistakes came from weakness, not lack of love. If I get one more chance, I promise to listen better, love deeper, and choose you every time.";
+let i = 0;
+
+function typeWriter(){
+  if(i < text.length){
+    document.getElementById("typeText").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeWriter,40);
+  }
+}
+typeWriter();
+
+function forgive(){
+  const r = document.getElementById("response");
+  r.classList.remove("hidden");
+  r.innerHTML = "Thank you See U Again Chotuu ❤️";
+  r.style.color = "#ffb6c1";
+}
+
+function talk(){
+  const phoneNumber = "7356445321"; // Country code + number (no +, no spaces)
+  const message = encodeURIComponent(
+    "Hey… I know this is sudden, but I really want to talk to you chotuu."
+  );
+
+  const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+  window.open(whatsappURL, "_blank");
+}
+
+</script>
+</body>
+</html>
